@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: freshloop
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: pnpm install && pnpm build
+    startCommand: pnpm start
+    healthCheckPath: /api/impact
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NEXT_PUBLIC_DEMO_MODE
+        value: "true"
+      - key: NEXT_PUBLIC_ENABLE_ROLE_SWITCHER
+        value: "true"
+      - key: NEXT_PUBLIC_DEFAULT_LOCALE
+        value: "en"
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        value: "https://ifsbxigbshqlbcavorpd.supabase.co"
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
